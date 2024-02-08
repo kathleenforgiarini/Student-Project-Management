@@ -2,6 +2,7 @@
 using SMTI_Student_Project_Management.GUI;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -38,9 +39,9 @@ namespace SMTI_Student_Project_Management.BLL
             this.grade = grade;
         }
 
-        public static List<ProjectAssignment> SearchProjectAssignments(int stId, string prjCode)
+        public static DataTable SearchProjectAssignments(int stId)
         {
-            return ProjectAssignmentDB.SearchProjectAssignments(stId, prjCode);
+            return ProjectAssignmentDB.SearchProjectAssignments(stId);
         }
     }
 }

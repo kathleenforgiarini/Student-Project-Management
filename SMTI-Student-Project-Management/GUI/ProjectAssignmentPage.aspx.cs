@@ -11,7 +11,7 @@ namespace SMTI_Student_Project_Management.GUI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            lblName.Text = "Welcome " + Session["fullname"].ToString();
         }
     }
 }

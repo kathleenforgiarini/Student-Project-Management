@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using SMTI_Student_Project_Management.BLL;
 using SMTI_Student_Project_Management.VALIDATION;
 
 namespace SMTI_Student_Project_Management.GUI
@@ -34,9 +35,25 @@ namespace SMTI_Student_Project_Management.GUI
                             txtBoxId.Focus();
                             return;
                         }
-                        Session["id"] = "";
-                        Session["fullname"] = ""; 
-                        Response.Redirect("ProjectAssignment.aspx");
+                        int tcId = Convert.ToInt32(id);
+                        Teacher teacher = Teacher.SearchTeacher(tcId, password);
+
+                        if (teacher == null)
+                        {
+                            MessageBox.Show("Invalid credencials for teacher!", "Invalid crendencials", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            txtBoxId.Text = "";
+                            txtBoxPassword.Text = "";
+                            txtBoxId.Focus();
+                            return;
+                        }
+
+                        Session["id"] = teacher.Id.ToString();
+                        Session["fullname"] = teacher.FName.ToString() + " " + teacher.LName.ToString();
+
+                        if (Page.IsValid)
+                        {
+                            Response.Redirect("ProjectAssignment.aspx");
+                        }
 
                         break;
 
@@ -48,7 +65,26 @@ namespace SMTI_Student_Project_Management.GUI
                             txtBoxId.Focus();
                             return;
                         }
-                        Response.Redirect("ProjectListByStudent.aspx");
+                        int stId = Convert.ToInt32(id);
+                        Student student = Student.SearchStudent(stId, password);
+
+                        if (student == null)
+                        {
+                            MessageBox.Show("Invalid credencials for student!", "Invalid crendencials", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            txtBoxId.Text = "";
+                            txtBoxPassword.Text = "";
+                            txtBoxId.Focus();
+                            return;
+                        }
+
+                        Session["id"] = student.Id.ToString();
+                        Session["fullname"] = student.FName.ToString() + " " + student.LName.ToString();
+                        
+                        if (Page.IsValid)
+                        {
+                            Response.Redirect("ProjectListByStudent.aspx");
+                        }
+
                         break;
 
                     default:
