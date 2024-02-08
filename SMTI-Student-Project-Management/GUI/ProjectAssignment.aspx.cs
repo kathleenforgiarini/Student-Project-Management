@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SMTI_Student_Project_Management
+namespace SMTI_Student_Project_Management.GUI
 {
-    public partial class LoginPage : System.Web.UI.Page
+    public partial class ProjectAssignment : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
