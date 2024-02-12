@@ -25,15 +25,14 @@ namespace SMTI_Student_Project_Management.DAL
                                               "JOIN Projects p ON pa.ProjectCode = p.ProjectCode " +
                                               "WHERE pa.StudentId = @StudentId";
 
-                using (SqlCommand command = new SqlCommand(cmdSelect.CommandText, conn))
-                {
-                    command.Parameters.AddWithValue("@StudentId", stId);
 
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                    {
-                        adapter.Fill(dt);
-                    }
+                cmdSelect.Parameters.AddWithValue("@StudentId", stId);
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmdSelect))
+                {
+                    adapter.Fill(dt);
                 }
+                
                 return dt;
             }
             catch (SqlException ex)
