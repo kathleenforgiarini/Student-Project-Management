@@ -35,9 +35,6 @@ namespace SMTI_Student_Project_Management.BLL
         public string LName { get => lName; set => lName = value; }
         public string Password { get => password; set => password = value; }
 
-        public static Student SearchStudent(int id, string pass)
-        {
-            return StudentDB.SearchStudent(id, pass);
-        }
+        public static Student SearchStudent(int id, string pass) => StudentDB.SearchStudent(id, pass);
     }
 }

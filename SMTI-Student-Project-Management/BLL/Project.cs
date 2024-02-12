@@ -30,9 +30,6 @@ namespace SMTI_Student_Project_Management.BLL
             this.dueDate = dueDate;
         }
 
-        public static List<Project> GetAllProjects()
-        {
-            return ProjectDB.GetAllRecords();
-        }
+        public static List<Project> GetAllProjects() => ProjectDB.GetAllRecords();
     }
 }

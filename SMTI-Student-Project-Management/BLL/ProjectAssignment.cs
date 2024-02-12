@@ -39,9 +39,6 @@ namespace SMTI_Student_Project_Management.BLL
             this.grade = grade;
         }
 
-        public static DataTable SearchProjectAssignments(int stId)
-        {
-            return ProjectAssignmentDB.SearchProjectAssignments(stId);
-        }
+        public static DataTable SearchProjectAssignments(int stId) => ProjectAssignmentDB.SearchProjectAssignments(stId);
     }
 }

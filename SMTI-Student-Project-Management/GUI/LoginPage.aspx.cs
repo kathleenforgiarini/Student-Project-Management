@@ -19,82 +19,76 @@ namespace SMTI_Student_Project_Management.GUI
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string type = radioType.SelectedValue.ToString();
-                string id = txtBoxId.Text.Trim();
-                string password = txtBoxPassword.Text.Trim();
+            string type = radioType.SelectedValue.ToString();
+            string id = txtBoxId.Text.Trim();
+            string password = txtBoxPassword.Text.Trim();
             
-                switch (type)
-                {
-                    case "teacher":
-                        if (!Validator.IsValidTeacherId(id))
-                        {
-                            MessageBox.Show("Invalid teacher ID! \nPlease enter another ID", "Invalid teacher ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            txtBoxId.Text = "";
-                            txtBoxId.Focus();
-                            return;
-                        }
-                        int tcId = Convert.ToInt32(id);
-                        Teacher teacher = Teacher.SearchTeacher(tcId, password);
-
-                        if (teacher == null)
-                        {
-                            MessageBox.Show("Invalid credencials for teacher!", "Invalid crendencials", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            txtBoxId.Text = "";
-                            txtBoxPassword.Text = "";
-                            txtBoxId.Focus();
-                            return;
-                        }
-
-                        Session["id"] = teacher.Id.ToString();
-                        Session["fullname"] = teacher.FName.ToString() + " " + teacher.LName.ToString();
-
-                        if (Page.IsValid)
-                        {
-                            Response.Redirect("ProjectAssignment.aspx");
-                        }
-
-                        break;
-
-                    case "student":
-                        if (!Validator.IsValidStudentId(id))
-                        {
-                            MessageBox.Show("Invalid student ID! \nPlease enter another ID", "Invalid student ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            txtBoxId.Text = "";
-                            txtBoxId.Focus();
-                            return;
-                        }
-                        int stId = Convert.ToInt32(id);
-                        Student student = Student.SearchStudent(stId, password);
-
-                        if (student == null)
-                        {
-                            MessageBox.Show("Invalid credencials for student!", "Invalid crendencials", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            txtBoxId.Text = "";
-                            txtBoxPassword.Text = "";
-                            txtBoxId.Focus();
-                            return;
-                        }
-
-                        Session["id"] = student.Id.ToString();
-                        Session["fullname"] = student.FName.ToString() + " " + student.LName.ToString();
-                        
-                        if (Page.IsValid)
-                        {
-                            Response.Redirect("ProjectListByStudent.aspx");
-                        }
-
-                        break;
-
-                    default:
-                        break;
-                }
-            }
-            catch (Exception ex)
+            switch (type)
             {
-                MessageBox.Show(ex.Message, "Something went wront", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                case "teacher":
+                    if (!Validator.IsValidTeacherId(id))
+                    {
+                        MessageBox.Show("Invalid teacher ID! \nPlease enter another ID", "Invalid teacher ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtBoxId.Text = "";
+                        txtBoxId.Focus();
+                        return;
+                    }
+                    int tcId = Convert.ToInt32(id);
+                    Teacher teacher = Teacher.SearchTeacher(tcId, password);
+
+                    if (teacher == null)
+                    {
+                        MessageBox.Show("Invalid credencials for teacher!", "Invalid crendencials", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtBoxId.Text = "";
+                        txtBoxPassword.Text = "";
+                        txtBoxId.Focus();
+                        return;
+                    }
+
+                    Session["id"] = teacher.Id.ToString();
+                    Session["fullname"] = teacher.FName.ToString() + " " + teacher.LName.ToString();
+
+                    if (Page.IsValid)
+                    {
+                        Response.Redirect("ProjectAssignment.aspx");
+                    }
+
+                    break;
+
+                case "student":
+                    if (!Validator.IsValidStudentId(id))
+                    {
+                        MessageBox.Show("Invalid student ID! \nPlease enter another ID", "Invalid student ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtBoxId.Text = "";
+                        txtBoxId.Focus();
+                        return;
+                    }
+                    int stId = Convert.ToInt32(id);
+                    Student student = Student.SearchStudent(stId, password);
+
+                    if (student == null)
+                    {
+                        MessageBox.Show("Invalid credencials for student!", "Invalid crendencials", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtBoxId.Text = "";
+                        txtBoxPassword.Text = "";
+                        txtBoxId.Focus();
+                        return;
+                    }
+
+                    Session["id"] = student.Id.ToString();
+                    Session["fullname"] = student.FName.ToString() + " " + student.LName.ToString();
+                        
+                    if (Page.IsValid)
+                    {
+                        Response.Redirect("ProjectListByStudent.aspx");
+                    }
+
+                    break;
+
+                default:
+                    break;
             }
+            
         }
     }
 }
