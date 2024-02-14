@@ -19,7 +19,7 @@ namespace SMTI_Student_Project_Management.GUI
             int studentId = Convert.ToInt32(Session["id"].ToString());
             try
             {
-                DataTable projects = BLL.ProjectAssignment.SearchProjectAssignments(studentId);
+                DataTable projects = ProjectAssignment.SearchProjectAssignments(studentId);
                 gridViewAssignedProjects.DataSource = projects;
                 gridViewAssignedProjects.DataBind();
             }

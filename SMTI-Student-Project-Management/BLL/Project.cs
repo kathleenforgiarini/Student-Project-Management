@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using SMTI_Student_Project_Management.DAL;
@@ -30,6 +31,6 @@ namespace SMTI_Student_Project_Management.BLL
             this.dueDate = dueDate;
         }
 
-        public static List<Project> GetAllProjects() => ProjectDB.GetAllRecords();
+        public static DataTable GetAllProjectsByStudent(int stId) => ProjectDB.GetAllProjectsByStudent(stId);
     }
 }

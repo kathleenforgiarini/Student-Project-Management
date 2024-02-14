@@ -1,6 +1,7 @@
 ﻿using SMTI_Student_Project_Management.DAL;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -36,5 +37,7 @@ namespace SMTI_Student_Project_Management.BLL
         public string Password { get => password; set => password = value; }
 
         public static Student SearchStudent(int id, string pass) => StudentDB.SearchStudent(id, pass);
+
+        public static DataTable GetAllStudentsByProject(string projectCode) => StudentDB.GetAllStudentsByProject(projectCode);
     }
 }

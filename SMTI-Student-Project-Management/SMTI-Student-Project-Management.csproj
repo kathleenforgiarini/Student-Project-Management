@@ -69,7 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="GUI\LoginPage.aspx" />
-    <Content Include="GUI\ProjectAssignmentPage.aspx" />
+    <Content Include="GUI\ProjAssignment.aspx" />
     <Content Include="GUI\ProjectListByStudent.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -90,12 +90,12 @@
     <Compile Include="GUI\LoginPage.aspx.designer.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ProjectAssignmentPage.aspx.cs">
-      <DependentUpon>ProjectAssignmentPage.aspx</DependentUpon>
+    <Compile Include="GUI\ProjAssignment.aspx.cs">
+      <DependentUpon>ProjAssignment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="GUI\ProjectAssignmentPage.aspx.designer.cs">
-      <DependentUpon>ProjectAssignmentPage.aspx</DependentUpon>
+    <Compile Include="GUI\ProjAssignment.aspx.designer.cs">
+      <DependentUpon>ProjAssignment.aspx</DependentUpon>
     </Compile>
     <Compile Include="GUI\ProjectListByStudent.aspx.cs">
       <DependentUpon>ProjectListByStudent.aspx</DependentUpon>

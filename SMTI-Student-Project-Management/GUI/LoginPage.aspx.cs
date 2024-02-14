@@ -50,7 +50,7 @@ namespace SMTI_Student_Project_Management.GUI
 
                     if (Page.IsValid)
                     {
-                        Response.Redirect("ProjectAssignment.aspx");
+                        Response.Redirect("ProjAssignment.aspx");
                     }
 
                     break;

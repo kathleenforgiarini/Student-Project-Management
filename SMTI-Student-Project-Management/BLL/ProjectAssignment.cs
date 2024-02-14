@@ -30,6 +30,13 @@ namespace SMTI_Student_Project_Management.BLL
             this.grade = 0;
         }
 
+        public ProjectAssignment(int studentId, string projectCode, DateTime assignedDate)
+        {
+            this.studentId = studentId;
+            this.projectCode = projectCode;
+            this.assignedDate = assignedDate;
+        }
+
         public ProjectAssignment(int studentId, string projectCode, DateTime assignedDate, DateTime submittedDate, int grade)
         {
             this.studentId = studentId;
@@ -40,5 +47,9 @@ namespace SMTI_Student_Project_Management.BLL
         }
 
         public static DataTable SearchProjectAssignments(int stId) => ProjectAssignmentDB.SearchProjectAssignments(stId);
+
+        public static void AssignProject(ProjectAssignment prjAssign) => ProjectAssignmentDB.AssignProject(prjAssign);
+
+        public static int GetNumberOfProjects(int stId) => ProjectAssignmentDB.GetNumberOfProjects(stId);
     }
 }

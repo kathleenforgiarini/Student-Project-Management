@@ -1,6 +1,7 @@
 ﻿using SMTI_Student_Project_Management.BLL;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -46,6 +47,38 @@ namespace SMTI_Student_Project_Management.DAL
                 conn.Close();
             }
 
+        }
+
+        internal static DataTable GetAllStudentsByProject(string projectCode)
+        {
+            SqlConnection conn = UtilityDB.GetDBConnection();
+            DataTable dt = new DataTable();
+            try
+            {
+                SqlCommand cmdSelect = new SqlCommand();
+                cmdSelect.Connection = conn;
+                cmdSelect.CommandText = "SELECT s.StudentId, s.FirstName, s.LastName " +
+                                       "FROM Students s " +
+                                       "JOIN ProjectAssignments pa ON s.StudentId = pa.StudentId " +
+                                       "WHERE pa.ProjectCode = @ProjectCode";
+
+                cmdSelect.Parameters.AddWithValue("@ProjectCode", projectCode);
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmdSelect))
+                {
+                    adapter.Fill(dt);
+                }
+
+                return dt;
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
     }
 }
